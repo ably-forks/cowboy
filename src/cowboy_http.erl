@@ -902,7 +902,7 @@ request_parse_connection(Buffer, State0=#state{in_streamid=StreamID,
 
 %% End of request parsing.
 
-request(Buffer, State0=#state{ref=Ref, transport=Transport, peer=Peer, sock=Sock, cert=Cert,
+request(Buffer, State0=#state{ref=Ref, transport=Transport, socket=Socket, peer=Peer, sock=Sock, cert=Cert,
 		opts=Opts, proxy_header=ProxyHeader, in_streamid=StreamID, in_state=
 			PS=#ps_header{method=Method, path=Path, qs=Qs, version=Version}},
 		Headers, Host, Port) ->
@@ -949,6 +949,8 @@ request(Buffer, State0=#state{ref=Ref, transport=Transport, peer=Peer, sock=Sock
 		peer => Peer,
 		sock => Sock,
 		cert => Cert,
+		transport => Transport,
+		socket => Socket,
 		method => Method,
 		scheme => Scheme,
 		host => Host,
